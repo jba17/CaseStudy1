@@ -149,11 +149,15 @@ if (!require(&quot;ggplot2&quot;)) {
   install.packages(&quot;ggplot2&quot;, repos=&quot;http://cran.rstudio.com/&quot;) 
 }</code></pre>
 <pre><code>## Loading required package: ggplot2</code></pre>
-<pre class="r"><code>library(ggplot2)
-#setwd(&quot;C:/Users/ThomasWang/Desktop/Doing Data Science/Case Study 1/CaseStudy1/CaseStudy1&quot;)</code></pre>
+<pre class="r"><code>library(ggplot2)</code></pre>
 <div id="step-1-downloading-the-data" class="section level2">
 <h2>Step 1: Downloading the data</h2>
 <p>We will be downloading our data from the provided URLs and read them into the variables GDP and econ. After analyzing the data, we also used this step to skip the first 3 rows of the GDP data because they are irrelevant to our analysis. Next we remove the sub-totals and totals at the bottom of the data set, as they will not be used in this analysis. In addition, we replaced empty values with ‘NA’ for both the GDP and econ data.</p>
+<pre class="r"><code>## @knitr Download
+#download and read the data
+
+GDP &lt;- read.csv('https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FGDP.csv ' ,skip = 3 ,nrows=236,na.strings=c(&quot;&quot;,&quot;NA&quot;))
+econ &lt;- read.csv('https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FEDSTATS_Country.csv',na.strings=c(&quot;&quot;,&quot;NA&quot;))</code></pre>
 <pre class="r"><code>#download and read the data
 
 GDP &lt;- read.csv('https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FGDP.csv ' ,skip = 3 ,nrows=236,na.strings=c(&quot;&quot;,&quot;NA&quot;))
@@ -352,23 +356,16 @@ summary(Clean_GDP)</code></pre>
 <div id="step-4-sort-the-data-in-ascending-order-question-2" class="section level2">
 <h2>Step 4: Sort the data in ascending order (Question 2)</h2>
 <p>After sorting the data we can see that St. Kitts and Nevis has the 13th smallest GDP. Note that St. Kitts and Nevis has the same GDP as Grenada, but due to sorting rules, St. Kitts and Nevis shows up as the 13th record returned.</p>
+</div>
+<div id="step-5-determine-the-average-gdp-rankings-for-the-high-income-oecd-and-high-income-nonoecd-groups-question-3" class="section level2">
+<h2>Step 5: Determine the average GDP rankings for the “High income: OECD” and “High income nonOECD” groups (Question 3)</h2>
+<p>What if we wanted to know the average GDP rank for “High income: OECD” countries and the “High income: nonOECD” countries? We could use the subset function to limit our data for only countries falling into those categories, and then take the mean of the rank column:</p>
 <pre class="r"><code>#sorting
 Comb_data&lt;-Comb_data[order(Comb_data$USD,decreasing=FALSE),]
 #Q2
 Comb_data[13,3]</code></pre>
 <pre><code>## [1] St. Kitts and Nevis
 ## 228 Levels: Afghanistan Albania Algeria American Samoa Andorra ... Zimbabwe</code></pre>
-</div>
-<div id="step-5-determine-the-average-gdp-rankings-for-the-high-income-oecd-and-high-income-nonoecd-groups-question-3" class="section level2">
-<h2>Step 5: Determine the average GDP rankings for the “High income: OECD” and “High income nonOECD” groups (Question 3)</h2>
-<p>What if we wanted to know the average GDP rank for “High income: OECD” countries and the “High income: nonOECD” countries? We could use the subset function to limit our data for only countries falling into those categories, and then take the mean of the rank column:</p>
-<pre class="r"><code>#Q3
-Hi_OECD&lt;-subset(Comb_data,Income.Group==&quot;High income: OECD&quot;,select=c(Rank,CountryCode,USD,Income.Group))
-mean(Hi_OECD$Rank)</code></pre>
-<pre><code>## [1] 32.96667</code></pre>
-<pre class="r"><code>Hi_nonOECD&lt;-subset(Comb_data,Income.Group==&quot;High income: nonOECD&quot;,select=c(Rank,CountryCode,USD,Income.Group))
-mean(Hi_nonOECD$Rank)</code></pre>
-<pre><code>## [1] 91.91304</code></pre>
 <p>After doing so, we can see that the High income: OECD countries have a higher average GDP ranking of 32.9667 vs. 91.91304.</p>
 </div>
 <div id="step-6-plot-and-color-code-based-on-income-group-the-gdp-for-all-of-the-countries-question-4" class="section level2">

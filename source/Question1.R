@@ -1,3 +1,4 @@
+## @knitr Question1
 #Merging the two datasets
 Comb_data<-merge(Clean_GDP,econ,by="CountryCode")
 #Making Rank and USD numeric

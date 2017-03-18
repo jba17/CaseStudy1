@@ -1,3 +1,5 @@
+## @knitr Clean
+
 #Cleaning the data, deleting unnecessary rows and columns
 names(GDP) <- c('CountryCode','Rank','x','Country','USD') 
 
