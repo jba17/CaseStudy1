@@ -1,11 +1,9 @@
 ---
 title: "Case Study 1"
-author: 'Group from MSDS 6306 - 404: Jethin Abraham, Daniel Higdon, Mustafa Sakarwala,
-  and Keyue Wang'
-date: "3/8/2017"
-output:
-  html_document: default
-  pdf_document: default
+output: 
+  html_document:
+    keep_md: true
+authors: 'Group from MSDS 6306 - 404: Jethin Abraham, Daniel Higdon, Mustafa Sakarwala and Keyue Wang'
 ---
 
 
@@ -334,7 +332,7 @@ Comb_data$CountryCode<-factor(Comb_data$CountryCode,levels=Comb_data[order(Comb_
 qplot(CountryCode,USD,data=Comb_data,fill=Income.Group,geom="col")+scale_y_log10(labels=c("$0","$10","$1K","$100K","$10M"))+labs(x="Country",y="GPD in USD (log10 scale)")
 ```
 
-<img src="CaseStudy1_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+![](CaseStudy1_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
 
 
 ##Step 7: Break the country ranks (by GDP) in to quantiles (Question 5)

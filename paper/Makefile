@@ -4,4 +4,4 @@ clean:
 	rm -f  CaseStudy1.html CaseStudy1.md
 
 CaseStudy1.html: CaseStudy1.Rmd
-	Rscript -e 'rmarkdown::render("$<", clean=FALSE)'
+	Rscript -e 'rmarkdown::render("$<")'

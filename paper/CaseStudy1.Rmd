@@ -1,11 +1,9 @@
 ---
 title: "Case Study 1"
-author: 'Group from MSDS 6306 - 404: Jethin Abraham, Daniel Higdon, Mustafa Sakarwala,
-  and Keyue Wang'
-date: "3/8/2017"
-output:
-  html_document: default
-  pdf_document: default
+output: 
+  html_document:
+    keep_md: true
+authors: 'Group from MSDS 6306 - 404: Jethin Abraham, Daniel Higdon, Mustafa Sakarwala and Keyue Wang'
 ---
 
 ```{r setup, include=FALSE}
@@ -22,7 +20,7 @@ The project will take readers through the analysis step-by-step, from downloadin
 
 Before getting started, you should make sure you have installed and loaded the ggplot2, and dplyr packages into your R workspace. We will use functions from both packages through the project.
 
-```{r code=readLines("../source/Setup.R")}
+```{r code=readLines("../source/Setup.R"), echo=TRUE}
 ```
 
 
