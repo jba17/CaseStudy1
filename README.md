@@ -6,14 +6,15 @@
 
 ##Files and folders
 
-    .paper/Makefile - build the project and renders the CaseStudy1.html and Casestudy1.md
-    .paper/CaseStudy1.Rmd - RMarkdown file that turns the analyses into high quality html and markdown document
+    paper/Makefile - build the project and renders the CaseStudy1.html and Casestudy1.md
+    paper/CaseStudy1.Rmd - RMarkdown file that turns the analyses into high quality html and markdown document
     source - a folder containing all scripts used for downloading, cleaning data and question steps
+    source/seetup.R - a script used for setup of required libraries.
     source/download.R - a script used for downloading and reading GDP and Education CSV data.
-    source/cleanData.R - a script used for cleaning the gdp data
-        cleans data from gdp.csv and creates a tidy gdp_tidy.csv file
-    source/clean_income_groups.R - a script used for cleaning the clean_income_groups data
-        cleans data from income_groups.csv and creates a tidy income_groups_tidy.csv file
-    source/merge.R - a script used for merging the two datasets
-        merges the data from gdp_tidy.csv and income_groups_tidy.csv files and creates merged_data.csv
+    source/cleanData.R - a script used for cleaning the gdp and education data sets
+    source/question1 - a script used for awnsering question1
+    source/question2 - a script used for awnsering question1
+    source/question3 - a script used for awnsering question1
+    source/question4 - a script used for awnsering question1
+    source/question5 - a script used for awnsering question1
 
