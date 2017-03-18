@@ -1,10 +1,11 @@
 #CaseStudy1
-##Instructions for Setup
+
+Instructions for Setup
 
     Clone the repo (or pull new changes):
     Using RStudio Build Menu Item (Build All) or (Clean and Build)
 
-##Files and folders
+Files and folders
 
     paper/Makefile - build the project and renders the CaseStudy1.html and Casestudy1.md
     paper/CaseStudy1.Rmd - RMarkdown file that turns the analyses into high quality html and markdown document
