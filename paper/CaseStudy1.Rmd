@@ -5,7 +5,6 @@ author: 'Group from MSDS 6306 - 404: Jethin Abraham, Daniel Higdon, Mustafa Saka
 date: "3/8/2017"
 output:
   html_document: default
-  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -40,8 +39,6 @@ read_chunk('../source/Question5.R')
 
 ##Step 1: Downloading the data
 We will be downloading our data from the provided URLs and read them into the variables GDP and econ. After analyzing the data, we also used this step to skip the first 3 rows of the GDP data because they are irrelevant to our analysis. Next we remove the sub-totals and totals at the bottom of the data set, as they will not be used in this analysis. In addition, we replaced empty values with 'NA' for both the GDP and econ data.
-```{r code=readLines("../source/DownloadData.R") ,echo=TRUE}
-```
 ```{r download}
 <<Download>>
 ```

@@ -153,11 +153,6 @@ if (!require(&quot;ggplot2&quot;)) {
 <div id="step-1-downloading-the-data" class="section level2">
 <h2>Step 1: Downloading the data</h2>
 <p>We will be downloading our data from the provided URLs and read them into the variables GDP and econ. After analyzing the data, we also used this step to skip the first 3 rows of the GDP data because they are irrelevant to our analysis. Next we remove the sub-totals and totals at the bottom of the data set, as they will not be used in this analysis. In addition, we replaced empty values with ‘NA’ for both the GDP and econ data.</p>
-<pre class="r"><code>## @knitr Download
-#download and read the data
-
-GDP &lt;- read.csv('https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FGDP.csv ' ,skip = 3 ,nrows=236,na.strings=c(&quot;&quot;,&quot;NA&quot;))
-econ &lt;- read.csv('https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FEDSTATS_Country.csv',na.strings=c(&quot;&quot;,&quot;NA&quot;))</code></pre>
 <pre class="r"><code>#download and read the data
 
 GDP &lt;- read.csv('https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FGDP.csv ' ,skip = 3 ,nrows=236,na.strings=c(&quot;&quot;,&quot;NA&quot;))
