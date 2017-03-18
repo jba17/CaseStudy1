@@ -1,5 +1,3 @@
-
-## @knitr Setup
 if (!require("dplyr")) {
   install.packages("dplyr", repos="http://cran.rstudio.com/") 
 }

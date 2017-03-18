@@ -1,4 +1,3 @@
-## @knitr Question3
 #sorting
 Comb_data<-Comb_data[order(Comb_data$USD,decreasing=FALSE),]
 #Q2

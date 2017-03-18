@@ -351,16 +351,23 @@ summary(Clean_GDP)</code></pre>
 <div id="step-4-sort-the-data-in-ascending-order-question-2" class="section level2">
 <h2>Step 4: Sort the data in ascending order (Question 2)</h2>
 <p>After sorting the data we can see that St. Kitts and Nevis has the 13th smallest GDP. Note that St. Kitts and Nevis has the same GDP as Grenada, but due to sorting rules, St. Kitts and Nevis shows up as the 13th record returned.</p>
-</div>
-<div id="step-5-determine-the-average-gdp-rankings-for-the-high-income-oecd-and-high-income-nonoecd-groups-question-3" class="section level2">
-<h2>Step 5: Determine the average GDP rankings for the “High income: OECD” and “High income nonOECD” groups (Question 3)</h2>
-<p>What if we wanted to know the average GDP rank for “High income: OECD” countries and the “High income: nonOECD” countries? We could use the subset function to limit our data for only countries falling into those categories, and then take the mean of the rank column:</p>
 <pre class="r"><code>#sorting
 Comb_data&lt;-Comb_data[order(Comb_data$USD,decreasing=FALSE),]
 #Q2
 Comb_data[13,3]</code></pre>
 <pre><code>## [1] St. Kitts and Nevis
 ## 228 Levels: Afghanistan Albania Algeria American Samoa Andorra ... Zimbabwe</code></pre>
+</div>
+<div id="step-5-determine-the-average-gdp-rankings-for-the-high-income-oecd-and-high-income-nonoecd-groups-question-3" class="section level2">
+<h2>Step 5: Determine the average GDP rankings for the “High income: OECD” and “High income nonOECD” groups (Question 3)</h2>
+<p>What if we wanted to know the average GDP rank for “High income: OECD” countries and the “High income: nonOECD” countries? We could use the subset function to limit our data for only countries falling into those categories, and then take the mean of the rank column:</p>
+<pre class="r"><code>#Q3
+Hi_OECD&lt;-subset(Comb_data,Income.Group==&quot;High income: OECD&quot;,select=c(Rank,CountryCode,USD,Income.Group))
+mean(Hi_OECD$Rank)</code></pre>
+<pre><code>## [1] 32.96667</code></pre>
+<pre class="r"><code>Hi_nonOECD&lt;-subset(Comb_data,Income.Group==&quot;High income: nonOECD&quot;,select=c(Rank,CountryCode,USD,Income.Group))
+mean(Hi_nonOECD$Rank)</code></pre>
+<pre><code>## [1] 91.91304</code></pre>
 <p>After doing so, we can see that the High income: OECD countries have a higher average GDP ranking of 32.9667 vs. 91.91304.</p>
 </div>
 <div id="step-6-plot-and-color-code-based-on-income-group-the-gdp-for-all-of-the-countries-question-4" class="section level2">
