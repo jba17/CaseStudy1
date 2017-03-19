@@ -3,7 +3,7 @@ Group from MSDS 6306 - 404: Jethin Abraham, Daniel Higdon, Mustafa Sakarwala and
 
 
 
-#Introduction
+# Introduction
 The puropose of our project is to demonstrate, and understand, how the annual GDP (Gross Domestic Product) of countries around the globe compares to the their income grouping according to The World Bank. Throughout the project we will utilize two World Bank data sets:
 
 1. GDP of 190 countries in 2012
@@ -57,7 +57,7 @@ library(ggplot2)
 ```
 
 
-##Step 1: Downloading the data
+## Step 1: Downloading the data
 We will be downloading our data from the provided URLs and read them into the variables GDP and econ. After analyzing the data, we also used this step to skip the first 3 rows of the GDP data because they are irrelevant to our analysis. Next we remove the sub-totals and totals at the bottom of the data set, as they will not be used in this analysis. In addition, we replaced empty values with 'NA' for both the GDP and econ data.
 
 ```r
@@ -67,7 +67,7 @@ GDP <- read.csv('https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FGDP.csv 
 econ <- read.csv('https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FEDSTATS_Country.csv',na.strings=c("","NA"))
 ```
 
-##Step 2: Cleaning the data
+## Step 2: Cleaning the data
 Now that we have our data, a quick view of it shows that the GDP data set is not clean. First, we rename each field to something that makes more sense ("CountryCode", "Rank", "Country", and "USD"). We will then sum the number of 'NA' that we find in our CountryCode column into the variable NA_Count. We see that there are a total of 8 counts of 'NA' in the CountryCode column. Finally, we have a remaining problem. R has saved the Rank as USD columns as factors, not numbers. We are going to do math on these columns later in the analysis, so we'll go ahead and change them to numeric in the last two lines of code.
 
 ```r
@@ -98,7 +98,7 @@ Clean_GDP$Rank<-as.numeric(as.character((Clean_GDP$Rank)))
 Clean_GDP$USD<-as.numeric(gsub(",","",Clean_GDP$USD))
 ```
 
-##Step 3: Merge the data sets (Question 1)
+## Step 3: Merge the data sets (Question 1)
 After merging the data sets you'll notice a warning message that NAs have been duplicated. This is again caused by R saving the Rank and USD fields as factors rather than the numeric data type. We'll fix it with the second and third line of code, similar to how we did in step two.
 
 ```r
@@ -280,7 +280,7 @@ summary(Comb_data)
 
 Looking at the output of the summary() functions on each data set, we see (from the length) that the Clean_GDP data set had 190 records, but the merged data set (Comb_data) has only 189. This tells us that only 189 of the IDs matched.
 
-##Step 4: Sort the data in ascending order (Question 2)
+## Step 4: Sort the data in ascending order (Question 2)
 After sorting the data we can see that St. Kitts and Nevis has the 13th smallest GDP. Note that St. Kitts and Nevis has the same GDP as Grenada, but due to sorting rules, St. Kitts and Nevis shows up as the 13th record returned.
 
 ```r
@@ -295,7 +295,7 @@ Comb_data[13,3]
 ## 228 Levels: Afghanistan Albania Algeria American Samoa Andorra ... Zimbabwe
 ```
 
-##Step 5: Determine the average GDP rankings for the "High income: OECD" and "High income nonOECD" groups (Question 3)
+## Step 5: Determine the average GDP rankings for the "High income: OECD" and "High income nonOECD" groups (Question 3)
 What if we wanted to know the average GDP rank for "High income: OECD" countries and the "High income: nonOECD" countries? We could use the subset function to limit our data for only countries falling into those categories, and then take the mean of the rank column:
 
 ```r
@@ -318,7 +318,7 @@ mean(Hi_nonOECD$Rank)
 ```
 After doing so, we can see that the High income: OECD countries have a higher average GDP ranking of 32.9667 vs. 91.91304.
 
-##Step 6: Plot, and color code based on income group, the GDP for all of the countries (Question 4)
+## Step 6: Plot, and color code based on income group, the GDP for all of the countries (Question 4)
 Charts can often help us understand a large amount of data, very quickly. To accomplish that, we'll plot the GDP in USD on the y-axis, and provide a column for each country on the x-axis. To make the chart even more helpful, we will color code the columns by income group, and put the y-axis on a log10 scale so that the outliers do not overwhelm the other data points:
 
 ```r
@@ -330,7 +330,7 @@ qplot(CountryCode,USD,data=Comb_data,fill=Income.Group,geom="col")+scale_y_log10
 ![](CaseStudy1_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
 
 
-##Step 7: Break the country ranks (by GDP) in to quantiles (Question 5)
+## Step 7: Break the country ranks (by GDP) in to quantiles (Question 5)
 Finally, we want to know how many countries are considered to be in the Lower middle income group, but in the top quantile of countries in terms of GDP. To accomplish this we'll create a new field called "quantile" and use the cut function to divide our data into quantiles. Then we'll subset the data to only those countires where "Income.Group" is equal to "Lower middle income" and their GDP rank is in the first quantile:
 
 ```r
@@ -349,7 +349,7 @@ str(IncvsGDP)
 ```
 Using the str() function to look at our final data set (which we called IncvsGDP) we can see that four countries fall both into the "Lower middle income" group, and have a GDP ranked in the top quantile.
 
-##Conclusion
+## Conclusion
 Throughout this project we have downloaded data from the internet, saved it onto our machines locally, as well as in our workspace, and then we cleaned and merged the data. After accomplishing this we were able to show the following:
 
   * 189 of the 190 countries in the GDP data set matched with the educational data set

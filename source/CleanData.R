@@ -17,5 +17,3 @@ NA_Count
 #making Rank and GDP numeric
 Clean_GDP$Rank<-as.numeric(as.character((Clean_GDP$Rank)))
 Clean_GDP$USD<-as.numeric(gsub(",","",Clean_GDP$USD))
-
-
